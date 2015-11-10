@@ -1,7 +1,11 @@
 'use strict';
+
+var currentToken = null;
+
 var projApi = {
   gameWatcher: null,
   url: 'http://localhost:3000',
+
 
   ajax: function(config, cb) {
     $.ajax(config).done(function(data, textStatus, jqxhr) {
@@ -26,7 +30,7 @@ var projApi = {
     this.ajax({
       method: 'POST',
       // url: 'http://httpbin.org/post',
-      url: this.ttt + '/login',
+      url: this.url + '/login',
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify(credentials),
       dataType: 'json'
@@ -34,10 +38,10 @@ var projApi = {
   },
 
   //Authenticated api actions
-  listGames: function (token, callback) {
+  listUsers: function (token, callback) {
     this.ajax({
       method: 'GET',
-      url: this.ttt + '/games',
+      url: this.url + '/users',
       headers: {
         Authorization: 'Token token=' + token
       },
@@ -136,7 +140,7 @@ var projApi = {
 
     };
 
-    $('.signup').on('submit', function(e) {
+    $('#signup-form').on('submit', function(e) {
       var credentials = wrap('credentials', form2object(this));
       projApi.register(credentials, callback);
       console.log(JSON.stringify(credentials, null, 4));
@@ -144,7 +148,7 @@ var projApi = {
       e.preventDefault();
     });
 
-    $('#login').on('submit', function(e) {
+    $('#login-form').on('submit', function(e) {
       var credentials = wrap('credentials', form2object(this));
       var cb = function cb(error, data) {
         if (error) {
@@ -152,16 +156,21 @@ var projApi = {
           return;
         }
         callback(null, data);
-        $('.token').val(data.user.token);
+        currentToken = (data.user.token);
       };
       e.preventDefault();
-      tttapi.login(credentials, cb);
+      projApi.login(credentials, cb);
     });
 
-    $('#list-games').on('submit', function(e) {
-      var token = $(this).children('[name="token"]').val();
+    $('.qbtnadd').click(function(e) {
+
       e.preventDefault();
-      tttapi.listGames(token, callback);
+      projApi.listUsers(currentToken, function(e, data) {
+        if (e)
+          console.log(e);
+        else
+          console.log(JSON.stringify(data, null, 4));
+      });
     });
 
     $('#create-game').on('submit', function(e) {

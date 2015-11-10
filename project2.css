@@ -292,3 +292,65 @@ textarea {
   margin-top:-20px;
   text-align:right;
 }
+
+
+.qbtnadd {
+  background: #3498db;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 2px 5px;
+  text-decoration: none;
+  float: left;
+}
+
+.qbtnadd:hover {
+  background: #FF0033;
+  background-image: -webkit-linear-gradient(top, #FF0033, #339900);
+  background-image: -moz-linear-gradient(top, #339900, #339900);
+  background-image: -ms-linear-gradient(top, #339900, #339900);
+  background-image: -o-linear-gradient(top, #339900, #339900);
+  background-image: linear-gradient(to bottom, #339900, #339900);
+  text-decoration: none;
+}
+
+.qbtnremove {
+  background: #3498db;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 2px 5px;
+  text-decoration: none;
+  float: right;
+}
+
+.qbtnremove:hover {
+  background: #FF0033;
+  background-image: -webkit-linear-gradient(top, #FF0033, #FF0033);
+  background-image: -moz-linear-gradient(top, #FF0033, #FF0033);
+  background-image: -ms-linear-gradient(top, #FF0033, #FF0033);
+  background-image: -o-linear-gradient(top, #FF0033, #FF0033);
+  background-image: linear-gradient(to bottom, #FF0033, #FF0033);
+  text-decoration: none;
+}
+
+.place-buttons {
+  position: relative;
+  top: 350px;
+}
