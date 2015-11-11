@@ -1,6 +1,7 @@
 'use strict';
 
 var currentToken = null;
+var first_name, last_name;
 
 var projApi = {
   gameWatcher: null,
@@ -49,15 +50,15 @@ var projApi = {
     }, callback);
   },
 
-  createGame: function (token, callback) {
+  createProfile: function (data, token, callback) {
     this.ajax({
       method: 'POST',
-      url: this.ttt + '/games',
+      url: this.url + '/profiles',
       headers: {
         Authorization: 'Token token=' + token
       },
       contentType: 'application/json; charset=utf-8',
-      data: JSON.stringify({}),
+      data: JSON.stringify(data),
       dataType: 'json',
     }, callback);
   },
@@ -120,6 +121,9 @@ var projApi = {
         if ($(this).attr('name') && type !== 'submit' && type !== 'hidden') {
           data[$(this).attr('name')] = $(this).val();
         }
+        if ($(this).attr('id') === "first_name") first_name = $(this).val();
+        if ($(this).attr('id') === "last_name") last_name = $(this).val();
+
       });
       return data;
     };
@@ -141,11 +145,19 @@ var projApi = {
     };
 
     $('#signup-form').on('submit', function(e) {
-      var credentials = wrap('credentials', form2object(this));
-      projApi.register(credentials, callback);
-      console.log(JSON.stringify(credentials, null, 4));
-
       e.preventDefault();
+      var credentials = wrap('credentials', form2object(this));
+      projApi.register(credentials, function(error, data){
+        var token = data.user.token;
+        var user_id = data.user.id;
+        var comment = "test";
+        var profileData = {'profile': {first_name, last_name, comment, user_id}};
+        console.log(JSON.stringify(profileData, null, 4));
+        projApi.createProfile(profileData, token, callback);
+      });
+
+
+
     });
 
     $('#login-form').on('submit', function(e) {
@@ -166,10 +178,17 @@ var projApi = {
 
       e.preventDefault();
       projApi.listUsers(currentToken, function(e, data) {
-        if (e)
+        if (e) {
           console.log(e);
-        else
+        } else {
           console.log(JSON.stringify(data, null, 4));
+         $('#qtable').append("<tr>" +
+                               "<td>" + first_name + "</td>" +
+                               "<td>" + last_name + "</td>" +
+                              "<td>" + comment + "</td>" +
+                             "</tr>");
+        };
+
       });
     });
 
