@@ -1,6 +1,7 @@
 'use strict';
 
 var currentToken = null;
+var currentId = null;
 var first_name, last_name;
 
 var projApi = {
@@ -43,6 +44,17 @@ var projApi = {
     this.ajax({
       method: 'GET',
       url: this.url + '/users',
+      headers: {
+        Authorization: 'Token token=' + token
+      },
+      dataType: 'json'
+    }, callback);
+  },
+
+  listProfiles: function (token, callback) {
+    this.ajax({
+      method: 'GET',
+      url: this.url + '/profiles',
       headers: {
         Authorization: 'Token token=' + token
       },
@@ -150,7 +162,7 @@ var projApi = {
       projApi.register(credentials, function(error, data){
         var token = data.user.token;
         var user_id = data.user.id;
-        var comment = "test";
+        var comment = "";
         var profileData = {'profile': {first_name, last_name, comment, user_id}};
         console.log(JSON.stringify(profileData, null, 4));
         projApi.createProfile(profileData, token, callback);
@@ -169,6 +181,7 @@ var projApi = {
         }
         callback(null, data);
         currentToken = (data.user.token);
+        currentId = data.user.id;
       };
       e.preventDefault();
       projApi.login(credentials, cb);
@@ -177,18 +190,21 @@ var projApi = {
     $('.qbtnadd').click(function(e) {
 
       e.preventDefault();
-      projApi.listUsers(currentToken, function(e, data) {
+      projApi.listProfiles(currentToken, function(e, data) {
         if (e) {
           console.log(e);
         } else {
           console.log(JSON.stringify(data, null, 4));
-         $('#qtable').append("<tr>" +
-                               "<td>" + first_name + "</td>" +
-                               "<td>" + last_name + "</td>" +
-                              "<td>" + comment + "</td>" +
+          data.profiles.forEach(function(profile){
+            if(profile.user_id === currentId){
+              $('#qtable').append("<tr>" +
+                               "<td>" + profile.first_name + "</td>" +
+                               "<td>" + profile.last_name + "</td>" +
+                               "<td>" + profile.comment + "</td>" +
                              "</tr>");
+            };
+          });
         };
-
       });
     });
 

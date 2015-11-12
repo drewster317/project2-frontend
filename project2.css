@@ -26,11 +26,13 @@ body {
 
 
 
+
 }
 
 #content {
 
   padding: 10px 10px 10px 10px;
+
 
 }
 
@@ -53,6 +55,9 @@ body {
   color: white;
   text-align: center;
 
+
+
+
 }
 
 #instructor1 {
@@ -60,9 +65,17 @@ body {
   width: 150px;
   height: 150px;
   background-color: #3399FF;
-  float: left;
   margin: 5px auto;
-  color: black;
+  color: white;
+  display: inline-block;
+  background-image: url("tom.jpg");
+  background-size: 100%;
+  border-style: solid;
+  border-color: white;
+
+
+
+
 
 }
 
@@ -71,9 +84,17 @@ body {
   width: 150px;
   height: 150px;
   background-color: #00F5F5;
-  float: left;
   margin: 5px auto;
-  color: black;
+  color: white;
+  display: inline-block;
+  background-image: url("antony.jpg");
+  background-size: 100%;
+  border-style: solid;
+  border-color: white;
+
+
+
+
 
 
 }
@@ -83,9 +104,15 @@ body {
   width: 150px;
   height: 150px;
   background-color: #B80000;
-  float: left;
   margin: 5px auto;
-  color: black;
+  color: white;
+  display: inline-block;
+  background-image: url("jeff.jpg");
+  background-size: 100%;
+  border-style: solid;
+  border-color: white;
+
+
 }
 
 #instructor4 {
@@ -93,9 +120,14 @@ body {
   width: 150px;
   height: 150px;
   background-color: #FFFF33;
-  float: left;
   margin: 5px auto;
-  color: black;
+  color: white;
+  display: inline-block;
+  background-image: url("saad.jpg");
+  background-size: 100%;
+  border-style: solid;
+  border-color: white;
+
 }
 
 #instructor5 {
@@ -103,9 +135,14 @@ body {
   width: 150px;
   height: 150px;
   background-color: #9966CC;
-  float: left;
   margin: 5px auto;
-  color: black;
+  color: white;
+  display: inline-block;
+  background-image: url("matt.jpg");
+  background-size: 100%;
+  border-style: solid;
+  border-color: white;
+
 }
 
 #footer {
