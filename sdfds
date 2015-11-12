@@ -1,0 +1,1 @@
+curl --request DELETE --header "Authorization: Token token=b77d84f5e748f3257cc581ec55572974" http://localhost:3000/help_queues/8

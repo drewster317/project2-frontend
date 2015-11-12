@@ -62,8 +62,8 @@ body {
 
 #instructor1 {
 
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   background-color: #3399FF;
   margin: 5px auto;
   color: white;
@@ -74,15 +74,12 @@ body {
   border-color: white;
 
 
-
-
-
 }
 
 #instructor2 {
 
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   background-color: #00F5F5;
   margin: 5px auto;
   color: white;
@@ -93,16 +90,12 @@ body {
   border-color: white;
 
 
-
-
-
-
 }
 
 #instructor3 {
 
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   background-color: #B80000;
   margin: 5px auto;
   color: white;
@@ -117,8 +110,8 @@ body {
 
 #instructor4 {
 
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   background-color: #FFFF33;
   margin: 5px auto;
   color: white;
@@ -132,8 +125,8 @@ body {
 
 #instructor5 {
 
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   background-color: #9966CC;
   margin: 5px auto;
   color: white;

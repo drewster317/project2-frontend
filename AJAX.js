@@ -51,6 +51,19 @@ var projApi = {
     }, callback);
   },
 
+
+listQueue: function (token, callback) {
+    this.ajax({
+      method: 'GET',
+      url: this.url + '/help_queues',
+      headers: {
+        Authorization: 'Token token=' + token
+      },
+      dataType: 'json'
+    }, callback);
+  },
+
+
   listProfiles: function (token, callback) {
     this.ajax({
       method: 'GET',
@@ -74,6 +87,31 @@ var projApi = {
       dataType: 'json',
     }, callback);
   },
+
+  createQueue: function (data, token, callback) {
+    this.ajax({
+      method: 'POST',
+      url: this.url + '/help_queues',
+      headers: {
+        Authorization: 'Token token=' + token
+      },
+      contentType: 'application/json; charset=utf-8',
+      data: JSON.stringify(data),
+      dataType: 'json',
+    }, callback);
+  },
+
+  deleteQueue: function(id, token, callback) {
+    this.ajax({
+      method: 'DELETE',
+      url: this.url + '/help_queues/' + id,
+      headers: {
+        Authorization: 'Token token=' + token
+      },
+      dataType: 'json'
+    }, callback);
+  },
+
 
 
   showGame: function (id, token, callback) {
@@ -190,14 +228,17 @@ var projApi = {
     $('.qbtnadd').click(function(e) {
 
       e.preventDefault();
-      projApi.listProfiles(currentToken, function(e, data) {
+      var data = {"help_queue": {"student_id": currentId, "instructor_id": "nil"}};
+      projApi.createQueue(data, currentToken, function(e, queueData){
+        if(e) {}
+        projApi.listProfiles(currentToken, function(e, data) {
         if (e) {
           console.log(e);
         } else {
           console.log(JSON.stringify(data, null, 4));
           data.profiles.forEach(function(profile){
             if(profile.user_id === currentId){
-              $('#qtable').append("<tr>" +
+              $('#qtable').append("<tr id='row-1'>" +
                                "<td>" + profile.first_name + "</td>" +
                                "<td>" + profile.last_name + "</td>" +
                                "<td>" + profile.comment + "</td>" +
@@ -206,6 +247,42 @@ var projApi = {
           });
         };
       });
+
+      });
+
+    });
+
+    $('.qbtnremove').click(function(e) {
+      e.preventDefault();
+      projApi.listQueue(currentToken, function(e, qdata) {
+        if(e) {}
+        qdata.help_queues.forEach(function(q) {
+          if(Number(q["student_id"]) === currentId) {
+            projApi.deleteQueue(q.id, currentToken, function(e,qdelete) {
+              if(e) {
+                console.log('poop');
+                 $('#row-1').remove();
+              }
+              else {
+
+                // projApi.listProfiles(currentToken, function(e, data) {
+                //   if (e) {
+                //     console.log(e);
+                //   } else {
+                //     console.log(JSON.stringify(data, null, 4));
+                //     data.profiles.forEach(function(profile){
+                //       if(profile.user_id === currentId){
+
+                //       };
+                //     });
+                //   };
+                // });
+              }
+            });
+          };
+        });
+      })
+
     });
 
     $('#create-game').on('submit', function(e) {
