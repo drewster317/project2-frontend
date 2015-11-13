@@ -44,6 +44,7 @@ body {
   text-align: center;
 
 
+
 }
 
 #main {
@@ -62,79 +63,95 @@ body {
 
 #instructor1 {
 
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
   background-color: #3399FF;
-  margin: 5px auto;
+  margin: 7px 10px;
   color: white;
-  display: inline-block;
+  float: left;
+  clear: left;
   background-image: url("tom.jpg");
   background-size: 100%;
   border-style: solid;
   border-color: white;
+  border-radius: 50%;
+  border-width: 2px;
 
 
 }
 
 #instructor2 {
 
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
   background-color: #00F5F5;
-  margin: 5px auto;
+  margin: 7px 10px;
   color: white;
-  display: inline-block;
+  clear: left;
+  float: left;
   background-image: url("antony.jpg");
   background-size: 100%;
   border-style: solid;
   border-color: white;
+  border-radius: 50%;
+  border-width: 2px;
 
 
 }
 
 #instructor3 {
 
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
   background-color: #B80000;
-  margin: 5px auto;
+  margin: 7px 10px;
   color: white;
-  display: inline-block;
+  clear: left;
+  float: left;
   background-image: url("jeff.jpg");
   background-size: 100%;
   border-style: solid;
   border-color: white;
+  border-radius: 50%;
+  border-width: 2px;
 
 
 }
 
 #instructor4 {
 
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
   background-color: #FFFF33;
-  margin: 5px auto;
+  margin: 7px 10px;
   color: white;
-  display: inline-block;
+  clear: left;
+  float: left;
   background-image: url("saad.jpg");
   background-size: 100%;
   border-style: solid;
   border-color: white;
+  border-width: 2px;
+  border-radius: 50%;
 
 }
 
 #instructor5 {
 
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
   background-color: #9966CC;
-  margin: 5px auto;
+  margin: 7px 10px;
   color: white;
-  display: inline-block;
+  clear: left;
+  float: left;
   background-image: url("matt.jpg");
+  display: inline-block;
   background-size: 100%;
   border-style: solid;
   border-color: white;
+  border-radius: 50%;
+  border-width: 2px;
 
 }
 
@@ -383,4 +400,34 @@ textarea {
 .place-buttons {
   position: relative;
   top: 350px;
+}
+
+.qbtnext {
+  background: #000000;
+  background-image: -webkit-linear-gradient(top, #000000, #396682);
+  background-image: -moz-linear-gradient(top, #000000, #396682);
+  background-image: -ms-linear-gradient(top, #000000, #396682);
+  background-image: -o-linear-gradient(top, #000000, #396682);
+  background-image: linear-gradient(to bottom, #000000, #396682);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #00FF99;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  float: right;
+  margin-top: 30px;
+  margin-right: 20px;
+}
+
+.qbtnext:hover {
+  background: #79f2de;
+  background-image: -webkit-linear-gradient(top, #79f2de, #5585a6);
+  background-image: -moz-linear-gradient(top, #79f2de, #5585a6);
+  background-image: -ms-linear-gradient(top, #79f2de, #5585a6);
+  background-image: -o-linear-gradient(top, #79f2de, #5585a6);
+  background-image: linear-gradient(to bottom, #79f2de, #5585a6);
+  text-decoration: none;
 }

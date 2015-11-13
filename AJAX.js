@@ -6,7 +6,7 @@ var first_name, last_name;
 
 var projApi = {
   gameWatcher: null,
-  url: 'http://localhost:3000',
+  url: 'https://secret-cove-5044.herokuapp.com/',
 
 
   ajax: function(config, cb) {
@@ -111,54 +111,6 @@ listQueue: function (token, callback) {
       dataType: 'json'
     }, callback);
   },
-
-
-
-  showGame: function (id, token, callback) {
-    this.ajax({
-      method: 'GET',
-      url: this.ttt + '/games/' + id,
-      headers: {
-        Authorization: 'Token token=' + token
-      },
-      dataType: 'json'
-    }, callback);
-  },
-
-  joinGame: function (id, token, callback) {
-    this.ajax({
-      method: 'PATCH',
-      url: this.ttt + '/games/' + id,
-      headers: {
-        Authorization: 'Token token=' + token
-      },
-      contentType: 'application/json; charset=utf-8',
-      data: JSON.stringify({}),
-      dataType: 'json'
-    }, callback);
-  },
-
-  markCell: function (id, data, token, callback) {
-    this.ajax({
-      method: 'PATCH',
-      url: this.ttt + '/games/' + id,
-      headers: {
-        Authorization: 'Token token=' + token
-      },
-      contentType: 'application/json; charset=utf-8',
-      data: JSON.stringify(data),
-      dataType: 'json'
-    }, callback);
-  },
-
-  watchGame: function (id, token) {
-    var url = this.ttt + '/games/' + id + '/watch';
-    var auth = {
-      Authorization: 'Token token=' + token
-    };
-    this.gameWatcher = resourceWatcher(url, auth); //jshint ignore: line
-    return this.gameWatcher;
-  }
 };
 
 
@@ -239,8 +191,8 @@ listQueue: function (token, callback) {
           data.profiles.forEach(function(profile){
             if(profile.user_id === currentId){
               $('#qtable').append("<tr id='row-1'>" +
-                               "<td>" + profile.first_name + "</td>" +
-                               "<td>" + profile.last_name + "</td>" +
+                               "<td id='s_fname'>" + profile.first_name + "</td>" +
+                               "<td id='s_lname'>" + profile.last_name + "</td>" +
                                "<td>" + profile.comment + "</td>" +
                              "</tr>");
             };
@@ -264,83 +216,17 @@ listQueue: function (token, callback) {
                  $('#row-1').remove();
               }
               else {
-
-                // projApi.listProfiles(currentToken, function(e, data) {
-                //   if (e) {
-                //     console.log(e);
-                //   } else {
-                //     console.log(JSON.stringify(data, null, 4));
-                //     data.profiles.forEach(function(profile){
-                //       if(profile.user_id === currentId){
-
-                //       };
-                //     });
-                //   };
-                // });
               }
             });
           };
         });
       })
-
     });
 
-    $('#create-game').on('submit', function(e) {
-      var token = $(this).children('[name="token"]').val();
-      e.preventDefault();
-      tttapi.createGame(token, callback);
+    $(".qbtnext").click(function(e){
+      var first = $("#s_fname").text();
+      var last = $("#s_lname").text();
+      $('#row-1').remove();
+      $("#instructor3").append("<div style = 'margin-left: 100px; margin-top: 20px '>" + first + " " + last + "</div>");
     });
-
-    $('#show-game').on('submit', function(e) {
-      var token = $(this).children('[name="token"]').val();
-      var id = $('#show-id').val();
-      e.preventDefault();
-      // gameId = data.game.id
-  //
-  tttapi.showGame(id, token, function(err, data){
-    gameId = data.game.id;
-    cell = data.game.cells;
-    token = data.user.token;
-
-  });
-});
-
-    $('#join-game').on('submit', function(e) {
-      var token = $(this).children('[name="token"]').val();
-      var id = $('#join-id').val();
-      e.preventDefault();
-      tttapi.joinGame(id, token, callback);
-    });
-
-    $('#mark-cell').on('submit', function(e) {
-      var token = $(this).children('[name="token"]').val();
-      var id = $('#mark-id').val();
-      var data = wrap('game', wrap('cell', form2object(this)));
-      e.preventDefault();
-      tttapi.markCell(id, data, token, callback);
-    });
-
-    $('#watch-game').on('submit', function(e){
-      var token = $(this).children('[name="token"]').val();
-      var id = $('#watch-id').val();
-      e.preventDefault();
-
-      var gameWatcher = tttapi.watchGame(id, token);
-
-      gameWatcher.on('change', function(data){
-        var parsedData = JSON.parse(data);
-      if (data.timeout) { //not an error
-        this.gameWatcher.close();
-        return console.warn(data.timeout);
-      }
-      var gameData = parsedData.game;
-      var cell = gameData.cell;
-      $('#watch-index').val(cell.index);
-      $('#watch-value').val(cell.value);
-    });
-      gameWatcher.on('error', function(e){
-        console.error('an error has occured with the stream', e);
-      });
-    });
-
   });
