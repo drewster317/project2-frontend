@@ -6,7 +6,7 @@ var first_name, last_name;
 
 var projApi = {
   gameWatcher: null,
-  url: 'https://secret-cove-5044.herokuapp.com/',
+  url: 'http://localhost:3000',
 
 
   ajax: function(config, cb) {
