@@ -52,7 +52,7 @@ var projApi = {
   },
 
 
-listQueue: function (token, callback) {
+  listQueue: function (token, callback) {
     this.ajax({
       method: 'GET',
       url: this.url + '/help_queues',
@@ -183,22 +183,22 @@ listQueue: function (token, callback) {
       var data = {"help_queue": {"student_id": currentId, "instructor_id": "nil"}};
       projApi.createQueue(data, currentToken, function(e, queueData){
         if(e) {}
-        projApi.listProfiles(currentToken, function(e, data) {
-        if (e) {
-          console.log(e);
-        } else {
-          console.log(JSON.stringify(data, null, 4));
-          data.profiles.forEach(function(profile){
-            if(profile.user_id === currentId){
-              $('#qtable').append("<tr id='row-1'>" +
-                               "<td id='s_fname'>" + profile.first_name + "</td>" +
-                               "<td id='s_lname'>" + profile.last_name + "</td>" +
-                               "<td>" + profile.comment + "</td>" +
-                             "</tr>");
+          projApi.listProfiles(currentToken, function(e, data) {
+            if (e) {
+              console.log(e);
+            } else {
+              console.log(JSON.stringify(data, null, 4));
+              data.profiles.forEach(function(profile){
+                if(profile.user_id === currentId){
+                  $('#qtable').append("<tr id='row-1'>" +
+                   "<td id='s_fname'>" + profile.first_name + "</td>" +
+                   "<td id='s_lname'>" + profile.last_name + "</td>" +
+                   "<td>" + profile.comment + "</td>" +
+                   "</tr>");
+                };
+              });
             };
           });
-        };
-      });
 
       });
 
@@ -208,18 +208,18 @@ listQueue: function (token, callback) {
       e.preventDefault();
       projApi.listQueue(currentToken, function(e, qdata) {
         if(e) {}
-        qdata.help_queues.forEach(function(q) {
-          if(Number(q["student_id"]) === currentId) {
-            projApi.deleteQueue(q.id, currentToken, function(e,qdelete) {
-              if(e) {
-                console.log('poop');
-                 $('#row-1').remove();
-              }
-              else {
-              }
-            });
-          };
-        });
+          qdata.help_queues.forEach(function(q) {
+            if(Number(q["student_id"]) === currentId) {
+              projApi.deleteQueue(q.id, currentToken, function(e,qdelete) {
+                if(e) {
+                  console.log('poop');
+                  $('#row-1').remove();
+                }
+                else {
+                }
+              });
+            };
+          });
       })
     });
 
@@ -227,6 +227,6 @@ listQueue: function (token, callback) {
       var first = $("#s_fname").text();
       var last = $("#s_lname").text();
       $('#row-1').remove();
-      $("#instructor3").append("<div style = 'margin-left: 100px; margin-top: 20px '>" + first + " " + last + "</div>");
+      $("#instructor1").append("<div style = 'margin-left: 100px; margin-top: 20px '>" + first + " " + last + "</div>");
     });
   });
