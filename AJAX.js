@@ -2,6 +2,7 @@
 
 var currentToken = null;
 var currentId = null;
+var instructor_role = false;
 var first_name, last_name;
 
 var projApi = {
@@ -149,7 +150,11 @@ var projApi = {
     $('#signup-form').on('submit', function(e) {
       e.preventDefault();
       var credentials = wrap('credentials', form2object(this));
-      projApi.register(credentials, function(error, data){
+      projApi.register(credentials, function(error, data) {
+         if(error) {
+          console.error(error);
+        }
+        console.log(data);
         var token = data.user.token;
         var user_id = data.user.id;
         var comment = "";
@@ -171,7 +176,14 @@ var projApi = {
         }
         callback(null, data);
         currentToken = (data.user.token);
+        instructor_role = data.user.instructor_role;
         currentId = data.user.id;
+        getHelpItems(currentToken);
+        if(instructor_role === true){
+          $('#next').show();
+        }else{
+          $('#next').hide();
+        }
       };
       e.preventDefault();
       projApi.login(credentials, cb);
@@ -227,6 +239,8 @@ var projApi = {
       var first = $("#s_fname").text();
       var last = $("#s_lname").text();
       $('#row-1').remove();
-      $("#instructor1").append("<div style = 'margin-left: 100px; margin-top: 20px '>" + first + " " + last + "</div>");
+      $("#instructor5").append("<div style = 'margin-left: 100px; margin-top: 20px '>" + first + " " + last + "</div>");
     });
   });
+
+

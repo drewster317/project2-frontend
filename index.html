@@ -3,113 +3,153 @@
 <head>
   <title>help-Q</title>
   <link rel="stylesheet" type="text/css" href="project2.css" />
-  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
   <script src="project2.js" type="text/javascript" charset="utf-8" async defer></script>
   <script src="AJAX.js" type="text/javascript" charset="utf-8" async defer></script>
   <style>
   </style>
 </head>
+
 <body>
 
-<div class="form">
 
-          <ul class="tab-group">
-            <li class="tab active"><a href="#signup">Sign Up</a></li>
-            <li class="tab"><a class='btn-login' href="#">Log In</a></li>
-          </ul>
+  <!-- begin wrapper -->
+  <div class="form">
 
-          <div class="tab-content">
-            <div id="signup">
-              <h1>Sign Up Here!</h1>
+    <!-- begin tab content -->
+    <div class="tab-content">
 
-              <form action="" id="signup-form">
+      <ul class="tab-group">
+        <li class="tab active"><a href="#signup">Sign Up</a></li>
+        <li class="tab"><a class='btn-login' href="#">Log In</a></li>
+      </ul>
 
-                <div class="top-row">
-                  <div class="field-wrap">
-                    <input id="first_name" type="text" required autocomplete="off" placeholder = "First Name">
-                  </div>
+      <!-- begin signup section -->
+      <div id="signup">
 
-                  <div class="field-wrap">
+        <h1>Sign Up Here!</h1>
 
-                    <input id="last_name" type="text"required autocomplete="off" placeholder = "Last Name">
-                  </div>
-                </div>
+        <!-- begin signup form -->
+        <form action="" id="signup-form">
 
-                <div class="field-wrap">
-                  <input name="email" type="email"required autocomplete="off" placeholder = "Email Address">
-                </div>
+          <div class="top-row">
 
-                <div class="field-wrap">
-                  <input name="password" type="password"required autocomplete="off" placeholder = "Create A Password">
-                </div>
-
-                 <div class="field-wrap">
-                  <input name="password_confirmation" type="password"required autocomplete="off" placeholder = "Confirm Password">
-                </div>
-
-                <button type="submit" class="button button-block button-register"/>Get Started</button>
-
-              </form>
-
+            <div class="field-wrap">
+              <input id="first_name" type="text" required autocomplete="off" placeholder = "First Name">
             </div>
 
-            <div id="login">
-              <h1>Welcome Back!</h1>
-
-              <form id="login-form">
-
-                <div class="field-wrap">
-
-                  <input name="email" type="email"required autocomplete="off" placeholder = "E-mail">
-                </div>
-
-                <div class="field-wrap">
-
-                  <input name="password" type="password"required autocomplete="off" placeholder = "Password">
-                </div>
-
-                <p class="forgot"><a href="#">Forgot Password?</a></p>
-
-                <button class="button button-block"/>Log In</button>
-
-              </form>
-
+            <div class="field-wrap">
+              <input id="last_name" type="text"required autocomplete="off" placeholder = "Last Name">
             </div>
 
-          </div><!-- tab-content -->
+            <div class="field-wrap">
+              <input name="email" type="email"required autocomplete="off" placeholder = "Email Address">
+            </div>
 
-        </div> <!-- /form -->
+            <div class="field-wrap">
+              <input name="password" type="password"required autocomplete="off" placeholder = "Create A Password">
+            </div>
+
+            <div class="field-wrap">
+              <input name="password_confirmation" type="password"required autocomplete="off" placeholder = "Confirm Password">
+            </div>
+
+          </div>
+
+
+
+          <p3>Are you a student or an instructor?</p3>
+
+          <!-- begin role -->
+
+
+<!--         <div class="role">
+          <div class="student_instructor">
+            <input type="radio" name="radio" value="student" checked="true">
+            <label for="student">Student</label>
+          </div>
+
+          <div>
+            <input type="radio" name="radio" value="instructor">
+            <label for="instructor">Instructor</label>
+          </div>
+        </div> -->
+
+
+        <div data-role="fieldcontain" class="student_instructor">
+          <fieldset data-role="controlgroup" data-type="horizontal" data-role="fieldcontain">
+            <!-- <legend></legend> -->
+            <input type="radio" name="radio" id="radio-choice-1" value="choice-1" />
+            <label for="radio">Student</label>
+
+            <input type="radio" name="radio" id="radio-choice-2" value="choice-2"  />
+            <label for="radio-choice-2">Instructor</label>
+          </fieldset>
+        </div>
+        <!-- end role -->
+
+      </form>
+      <!-- end signup form -->
+      <button type="submit" class="button button-block button-register button-fix"/>Get Started</button>
+    </div>
+    <!-- end signup section -->
 
 
 
 
+
+
+    <!-- begin login section -->
+    <div id="login">
+      <h1>Welcome Back!</h1>
+
+      <!-- begin login form -->
+      <form id="login-form">
+        <div class="field-wrap">
+          <input name="email" type="email"required autocomplete="off" placeholder = "E-mail">
+        </div>
+        <div class="field-wrap">
+          <input name="password" type="password"required autocomplete="off" placeholder = "Password">
+        </div>
+        <p class="forgot"><a href="#">Forgot Password?</a></p>
+        <button class="button button-block"/>Log In</button>
+      </form>
+      <!-- end login form -->
+
+    </div>
+    <!-- end login section -->
+  </div>
+  <!-- end tab content -->
+
+  <!-- begin container -->
   <div id="container">
+
     <div id="header">
       <h1>help-Q</h1>
     </div>
 
+    <!-- begin content section -->
     <div id="content">
+
+      <!-- begin queue section -->
       <div id="queue">
         <h3>Queue</h3>
+
         <table id="qtable" style="width:100%">
-
-          <tr>
-            <td>First name</td>
-            <td>Last name</td>
-            <td>Need Help With</td>
-          </tr>
-
-
         </table>
 
-        <div class= "place-buttons"><button type="button" class="qbtnadd"/>+ to Queue</button>
-                <button type="button" class="qbtnremove"/>- from Queue</button></div>
+        <div class= "place-buttons">
+          <button type="button" class="qbtnadd"/>+ to Queue</button>
+          <button type="button" class="qbtnremove"/>- from Queue</button>
+        </div>
 
-</div>
+      </div>
+      <!-- end queue section -->
 
 
-
+      <!-- begin being helped section -->
       <div id="main">
+
         <h3>Being Helped</h3>
 
         <div id="instructor1">
@@ -129,19 +169,28 @@
         </div>
 
         <div id="instructor5">
-
         </div>
-        <div><button type="button" class="qbtnext" >NEXT</button></div>
 
-     </div>
+        <div>
+          <button type="button" class="qbtnext" id="next">NEXT</button>
+        </div>
+
+      </div>
+      <!-- end being helped section -->
+
 
       <div id="footer">
         Copyright &copy; 2015 Andrew McMullen.
       </div>
 
     </div>
-  </div>
+    <!-- end content section -->
 
+  </div>
+  <!-- end container -->
+
+</div>
+<!-- end wrapper -->
 
 </body>
 </html>
