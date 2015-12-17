@@ -198,27 +198,24 @@ var projApi = {
       var data = {"help_item": {"student_id": currentId, "instructor_id": "nil", "comment": "nil"}};
       projApi.createQueue(data, currentToken, callback
 
-      //   function(e, queueData){
-      //   if(e) {console.log(e)}
-      //     projApi.listProfiles(currentToken, function(e, data) {
-      //       if (e) {
-      //         console.log(e);
-      //       } else {
-      //         data.profiles.forEach(function(profile){
-      //           if(profile.user_id === currentId){
-      //             $('#qtable').append("<tr id='row-1'>" +
-      //              "<td id='s_fname'>" + profile.first_name + "</td>" +
-      //              "<td id='s_lname'>" + profile.last_name + "</td>" +
-      //              "<td>" + profile.comment + "</td>" +
-      //              "</tr>");
-      //           };
-      //         });
-      //       };
-      //     });
-
-      // }
+        // function(e, queueData){
+        // if(e) {console.log(e)}
+        //   projApi.listProfiles(currentToken, function(e, data) {
+        //     if (e) {
+        //       console.log(e);
+        //     } else {
+        //       data.profiles.forEach(function(profile){
+        //         if(profile.user_id === currentId){
+        //           $('#qtable').append("<tr id='row-1'>" +
+        //            "<td id='s_fname'>" + profile.first_name + "</td>" +
+        //            "<td id='s_lname'>" + profile.last_name + "</td>" +
+        //            "<td>" + profile.comment + "</td>" +
+        //            "</tr>");
+        //         };
+        //       });
+        //     };
+        //   });
       );
-
     });
 
     $('.qbtnremove').click(function(e) {
@@ -241,37 +238,52 @@ var projApi = {
     });
 
     $(".qbtnext").click(function(e){
-      var first = currentStudent.student_first_name
-      var last = currentStudent.student_last_name
-      var item = currentStudent.comment
-      $('#row-1').remove();
-      switch (user_name) {
-        case "tom":
-          $('#tom').html("")
-          $('#tom').html(first + " " + last + ": " + item)
+      // var first = currentStudent.student_first_name
+      // var last = currentStudent.student_last_name
+      // var item = currentStudent.comment
+      var item = $('#qtable').find('.help_item')[0]
+      // var item = $('#' + currentStudent.id);
+      var itemRowHTML = $(item).html();
+      item.remove();
 
-        break;
-        case "antony":
-          $('#antony').html("")
-          $('#antony').html(first + " " + last + ": " + item)
-        break;
-        case "jeff":
-          $('#jeff').html("")
-          $('#jeff').html(first + " " + last + ": " + item)
-        break;
-        case "saad":
-          $('#saad').html("")
-          $('#saad').html(first + " " + last + ": " + item)
-        break;
-        case "matt":
-          $('#matt').html("")
-          $('#matt').html(first + " " + last + ": " + item)
-        break;
-       default:
-        break;
-      }
-
+      $.ajax({
+        method: 'DELETE',
+        url: 'http://localhost:3000/help_items/' + item.id,
+        headers: {
+          Authorization: 'Token token=' + currentToken
+        },
+      }).done(function (data) {
+        console.log("success!");
+      });
     });
+
+    //   switch (user_name) {
+    //     case "tom":
+    //       // $('#tom').html("")
+    //       // $('#tom').html(first + " " + last + ": " + item)
+    //       $('#tom').html(itemRowHTML);
+    //     break;
+    //     // case "antony":
+    //     //   $('#antony').html("")
+    //     //   $('#antony').html(first + " " + last + ": " + item)
+    //     // break;
+    //     // case "jeff":
+    //     //   $('#jeff').html("")
+    //     //   $('#jeff').html(first + " " + last + ": " + item)
+    //     // break;
+    //     // case "saad":
+    //     //   $('#saad').html("")
+    //     //   $('#saad').html(first + " " + last + ": " + item)
+    //     // break;
+    //     // case "matt":
+    //     //   $('#matt').html("")
+    //     //   $('#matt').html(first + " " + last + ": " + item)
+    //     // break;
+    //    default:
+    //     break;
+    //   }
+
+    // });
   });
 
 

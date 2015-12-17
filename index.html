@@ -148,7 +148,7 @@
 
 
       <!-- begin being helped section -->
-      <div id="main">
+     <!--  <div id="main">
 
         <h3>Being Helped</h3>
 
@@ -158,7 +158,7 @@
           <tr><td id="in3"></td><td id="jeff"></td></tr>
           <tr><td id="in4"></td><td id="saad"></td></tr>
           <tr><td id="in5"></td><td id="matt"></td></tr>
-        </table>
+        </table> -->
 
         <button type="button" class="qbtnext"/>Next</button>
 
@@ -178,5 +178,12 @@
 </div>
 <!-- end wrapper -->
 
+<script id="helpQTemplate" type="x-handlebars-template">
+  <#each helpq>
+    {{first_name}}
+    {{las}}
+
+  </each>
+</script>
 </body>
 </html>

@@ -52,7 +52,7 @@ $('.tab a').on('click', function (e) {
 
   target = $(this).attr('href');
 
-  $('.tab-content > div').not(target).hide();
+  // $('.tab-content > div').hide();
 
   $(target).fadeIn(600);
 
@@ -76,7 +76,7 @@ var getHelpItems = function(token) {
     currentStudent = helpItems[0]
     helpItems.forEach(function(item){
       if(item.status === 'waiting'){
-        helpItemsHTML += "<tr><td>" + item.student_first_name + "</td><td>" + item.student_last_name + "</td><td>" + item.comment + "</td></tr>"
+        helpItemsHTML += "<tr  class='help_item' id=" + item.id + "><td>" + item.student_first_name + "</td><td>" + item.student_last_name + "</td><td>" + item.comment + "</td></tr>"
       }else if (item.status === 'active'){
          var activeItemHTML = "<li>" + item.student_first_name + ", " + item.student_last_name + "<p>" + item.comment + "</p></li>"
          $("#" +item.instructor_first_name).append(activeItemHTML);
