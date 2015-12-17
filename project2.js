@@ -77,6 +77,10 @@ var getHelpItems = function(token) {
       if(item.status === 'waiting'){
         helpItemsHTML += "<tr><td>" + item.student_first_name + "</td><td>" + item.student_last_name + "</td><td>" + item.comment + "</td></tr>"
       }else if (item.status === 'active'){
+         var activeItemHTML = "<li>" + item.student_first_name + ", " + item.student_last_name + "<p>" + item.comment + "</p></li>"
+         $("#" +item.instructor_first_name).append(activeItemHTML);
+         activeItemHTML = "";
+
         console.log("item is active");
       }
     })

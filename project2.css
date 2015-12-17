@@ -35,7 +35,7 @@ body {
   text-align: center;
 }*/
 
-#instructor1 {
+#in1 {
   width: 70px;
   height: 70px;
   background-color: #3399FF;
@@ -50,7 +50,7 @@ body {
   border-radius: 50%;
   border-width: 2px;
 }
-#instructor2 {
+#in2 {
   width: 70px;
   height: 70px;
   background-color: #00F5F5;
@@ -65,7 +65,7 @@ body {
   border-radius: 50%;
   border-width: 2px;
 }
-#instructor3 {
+#in3 {
   width: 70px;
   height: 70px;
   background-color: #B80000;
@@ -80,7 +80,7 @@ body {
   border-radius: 50%;
   border-width: 2px;
 }
-#instructor4 {
+#in4 {
   width: 70px;
   height: 70px;
   background-color: #FFFF33;
@@ -95,7 +95,7 @@ body {
   border-width: 2px;
   border-radius: 50%;
 }
-#instructor5 {
+#in5 {
   width: 70px;
   height: 70px;
   background-color: #9966CC;
@@ -110,6 +110,14 @@ body {
   border-color: white;
   border-radius: 50%;
   border-width: 2px;
+}
+
+#tom {
+  width: 70px;
+  height: 30px;
+
+
+
 }
 #footer {
   clear: both;
