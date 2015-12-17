@@ -56,7 +56,7 @@ var projApi = {
   listQueue: function (token, callback) {
     this.ajax({
       method: 'GET',
-      url: this.url + '/help_queues',
+      url: this.url + '/help_items',
       headers: {
         Authorization: 'Token token=' + token
       },
@@ -92,7 +92,7 @@ var projApi = {
   createQueue: function (data, token, callback) {
     this.ajax({
       method: 'POST',
-      url: this.url + '/help_queues',
+      url: this.url + '/help_items',
       headers: {
         Authorization: 'Token token=' + token
       },
@@ -195,27 +195,29 @@ var projApi = {
     $('.qbtnadd').click(function(e) {
 
       e.preventDefault();
-      var data = {"help_queue": {"student_id": currentId, "instructor_id": "nil"}};
-      projApi.createQueue(data, currentToken, function(e, queueData){
-        if(e) {}
-          projApi.listProfiles(currentToken, function(e, data) {
-            if (e) {
-              console.log(e);
-            } else {
-              console.log(JSON.stringify(data, null, 4));
-              data.profiles.forEach(function(profile){
-                if(profile.user_id === currentId){
-                  $('#qtable').append("<tr id='row-1'>" +
-                   "<td id='s_fname'>" + profile.first_name + "</td>" +
-                   "<td id='s_lname'>" + profile.last_name + "</td>" +
-                   "<td>" + profile.comment + "</td>" +
-                   "</tr>");
-                };
-              });
-            };
-          });
+      var data = {"help_item": {"student_id": currentId, "instructor_id": "nil", "comment": "nil"}};
+      projApi.createQueue(data, currentToken, callback
 
-      });
+      //   function(e, queueData){
+      //   if(e) {console.log(e)}
+      //     projApi.listProfiles(currentToken, function(e, data) {
+      //       if (e) {
+      //         console.log(e);
+      //       } else {
+      //         data.profiles.forEach(function(profile){
+      //           if(profile.user_id === currentId){
+      //             $('#qtable').append("<tr id='row-1'>" +
+      //              "<td id='s_fname'>" + profile.first_name + "</td>" +
+      //              "<td id='s_lname'>" + profile.last_name + "</td>" +
+      //              "<td>" + profile.comment + "</td>" +
+      //              "</tr>");
+      //           };
+      //         });
+      //       };
+      //     });
+
+      // }
+      );
 
     });
 
