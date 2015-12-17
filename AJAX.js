@@ -23,6 +23,9 @@ var projApi = {
       method: 'POST',
       // url: 'http://httpbin.org/post',
       url: this.url + '/register',
+      headers: {
+        Authorization: 'Token token=' + token
+      },
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify(credentials),
       dataType: 'json'
@@ -34,6 +37,9 @@ var projApi = {
       method: 'POST',
       // url: 'http://httpbin.org/post',
       url: this.url + '/login',
+      headers: {
+        Authorization: 'Token token=' + token
+      },
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify(credentials),
       dataType: 'json'
