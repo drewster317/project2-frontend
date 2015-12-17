@@ -4,7 +4,7 @@ var currentToken = null;
 var currentId = null;
 var instructor_role = false;
 var first_name, last_name;
-
+var user_name;
 var projApi = {
   gameWatcher: null,
   url: 'http://localhost:3000',
@@ -179,10 +179,13 @@ var projApi = {
         instructor_role = data.user.instructor_role;
         currentId = data.user.id;
         getHelpItems(currentToken);
+        user_name = data.user.email.split("@")[0];
+        console.log(user_name);
+
         if(instructor_role === true){
-          $('#next').show();
+          $('.qbtnext').show();
         }else{
-          $('#next').hide();
+          $('.qbtnext').hide();
         }
       };
       e.preventDefault();
@@ -236,10 +239,36 @@ var projApi = {
     });
 
     $(".qbtnext").click(function(e){
-      var first = $("#s_fname").text();
-      var last = $("#s_lname").text();
+      var first = currentStudent.student_first_name
+      var last = currentStudent.student_last_name
+      var item = currentStudent.comment
       $('#row-1').remove();
-      $("#instructor5").append("<div style = 'margin-left: 100px; margin-top: 20px '>" + first + " " + last + "</div>");
+      switch (user_name) {
+        case "tom":
+          $('#tom').html("")
+          $('#tom').html(first + " " + last + ": " + item)
+
+        break;
+        case "antony":
+          $('#antony').html("")
+          $('#antony').html(first + " " + last + ": " + item)
+        break;
+        case "jeff":
+          $('#jeff').html("")
+          $('#jeff').html(first + " " + last + ": " + item)
+        break;
+        case "saad":
+          $('#saad').html("")
+          $('#saad').html(first + " " + last + ": " + item)
+        break;
+        case "matt":
+          $('#matt').html("")
+          $('#matt').html(first + " " + last + ": " + item)
+        break;
+       default:
+        break;
+      }
+
     });
   });
 

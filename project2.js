@@ -1,4 +1,5 @@
 
+var currentStudent = {};
 $(document).ready(function() {
   //if the logged in user is an instructor then show next button
 
@@ -72,7 +73,7 @@ var getHelpItems = function(token) {
 
     var helpItemsHTML = "<tr><th>First name</th><th>Last name</th><th>Need Help With</th></tr>";
     var helpItems = data.help_items;
-
+    currentStudent = helpItems[0]
     helpItems.forEach(function(item){
       if(item.status === 'waiting'){
         helpItemsHTML += "<tr><td>" + item.student_first_name + "</td><td>" + item.student_last_name + "</td><td>" + item.comment + "</td></tr>"
