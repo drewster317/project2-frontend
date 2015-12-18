@@ -68,7 +68,6 @@ var getHelpItems = function(token) {
     dataType: 'json'
   })
   .done(function(data) {
-    debugger;
     console.log("Help Items = " + data);
 
     var helpItemsHTML = "<tr><th>First name</th><th>Last name</th><th>Need Help With</th></tr>";
