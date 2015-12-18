@@ -7,7 +7,7 @@ var first_name, last_name;
 var user_name;
 var projApi = {
   gameWatcher: null,
-  url: 'https://secret-cove-5044.herokuapp.com',
+  url: 'http://localhost:3000',
 
 
   ajax: function(config, cb) {
@@ -23,9 +23,6 @@ var projApi = {
       method: 'POST',
       // url: 'http://httpbin.org/post',
       url: this.url + '/register',
-      headers: {
-        Authorization: 'Token token=' + token
-      },
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify(credentials),
       dataType: 'json'
@@ -37,12 +34,8 @@ var projApi = {
       method: 'POST',
       // url: 'http://httpbin.org/post',
       url: this.url + '/login',
-      headers: {
-        Authorization: 'Token token=' + token
-      },
-      contentType: 'application/json; charset=utf-8',
-      data: JSON.stringify(credentials),
-      dataType: 'json'
+      contentType: 'application/json; charset=utf-8'
+
     }, callback);
   },
 
