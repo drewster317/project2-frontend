@@ -34,8 +34,9 @@ var projApi = {
       method: 'POST',
       // url: 'http://httpbin.org/post',
       url: this.url + '/login',
-      contentType: 'application/json; charset=utf-8'
-
+      contentType: 'application/json; charset=utf-8',
+      data: JSON.stringify(credentials),
+      dataType: 'json'
     }, callback);
   },
 
