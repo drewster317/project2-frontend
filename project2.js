@@ -61,7 +61,7 @@ $('.tab a').on('click', function (e) {
 var getHelpItems = function(token) {
   // Make a request to get all the help items
   $.ajax({
-    url: 'http://localhost:3000/help_items',
+    url: projApi.url + '/help_items',
     headers: {
         Authorization: 'Token token=' + token
     },

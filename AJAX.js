@@ -248,7 +248,7 @@ var projApi = {
 
       $.ajax({
         method: 'DELETE',
-        url: 'http://localhost:3000/help_items/' + item.id,
+        url: projApi.url + '/help_items' + item.id,
         headers: {
           Authorization: 'Token token=' + currentToken
         },
